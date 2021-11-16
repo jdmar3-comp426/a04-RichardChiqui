@@ -1,5 +1,5 @@
 // Define app using express
-var express = require("express")
+var express = require("express")();
 var app = express()
 // Require database SCRIPT file
 var db
@@ -39,7 +39,7 @@ app.get("/app/users", (req, res) => {
 });
 
 // READ a single user (HTTP method GET) at endpoint /app/user/:id
-app.read("/app/new", (req,res) => {
+app.read("/app/new/:id", (req,res) => {
 	const readuser  = db.prepare("SELECT * FROM userinfo U WHERE U.id = req.params.id").all();
 	res.status(200).json({"message is good":"Ok (200)"});
 });
