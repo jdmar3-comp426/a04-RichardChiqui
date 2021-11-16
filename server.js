@@ -39,13 +39,13 @@ app.get("/app/users", (req, res) => {
 });
 
 // READ a single user (HTTP method GET) at endpoint /app/user/:id
-app.readuser("/app/new", (req,res) => {
+app.read("/app/new", (req,res) => {
 	const readuser  = db.prepare("SELECT * FROM userinfo U WHERE U.id = req.params.id").all();
 	res.status(200).json({"message is good":"Ok (200)"});
 });
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 
-app.updateuser("/app/new", (req,res) => {
+app.update("/app/new", (req,res) => {
 	const updateuser  = db.prepare("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass) WHERE id = ?").all();
 	res.status(200).json({"message is good":"Ok (200)"});
 });
